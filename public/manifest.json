@@ -1,0 +1,14 @@
+{
+  "name": "Project_Details",
+  "version": "0.0.1",
+  "size": {
+    "width": 3,
+    "height": 3
+  },
+  "mapping": [],
+  "collections": [{ "name": "ProjectDetails", "type": "STRING" }],
+  "workflowMapping": [],
+  "packagesMapping": [],
+  "id":"657ef5e9-57d2-4642-8d5c-23869a787332",
+  "proxyId":"5fa355dc-3977-4728-b630-c6973ac17d27"
+}
