@@ -10,6 +10,11 @@ const proxy = new Proxy(config);
 
 // https://vite.dev/config/
 export default defineConfig({
+  server: {
+    proxy: {
+      "/api": "http://127.0.0.1:6000",
+    },
+  },
   plugins: [
     react(),
     tailwindcss(),
@@ -27,7 +32,12 @@ export default defineConfig({
           };
           next();
         });
-        server.middlewares.use(proxy.express());
+        server.middlewares.use((req, res, next) => {
+          if (req.url.startsWith("/api")) {
+            return next();
+          }
+          proxy.express()(req, res, next);
+        });
       },
     },
   ],

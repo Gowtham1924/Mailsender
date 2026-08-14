@@ -48,12 +48,19 @@ app.post('/api/requests', async (req, res) => {
       approvalStatus, currentStatus, startDate, endDate, costEstimation 
     } = req.body;
 
-    // Save to database
-    const newRequest = new Request({ 
+    const requestData = { 
       projectName, serviceName, resourceName, region, cicd, 
       specification, developer, owner, approveName, 
       approvalStatus, currentStatus, startDate, endDate, costEstimation 
-    });
+    };
+
+    // Remove empty strings for Date and Number fields to prevent Mongoose CastErrors
+    if (requestData.startDate === "") delete requestData.startDate;
+    if (requestData.endDate === "") delete requestData.endDate;
+    if (requestData.costEstimation === "") delete requestData.costEstimation;
+
+    // Save to database
+    const newRequest = new Request(requestData);
     await newRequest.save();
 
     // Send email notification

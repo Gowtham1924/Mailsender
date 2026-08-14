@@ -10,11 +10,11 @@ const requestSchema = new mongoose.Schema({
   developer: { type: String, required: true },
   owner: { type: String, required: true },
   approveName: { type: String, required: true },
-  approvalStatus: { type: String, required: true },
-  currentStatus: { type: String, required: true },
-  startDate: { type: Date, required: true },
-  endDate: { type: Date, required: true },
-  costEstimation: { type: Number, required: true },
+  approvalStatus: { type: String, required: false },
+  currentStatus: { type: String, required: false },
+  startDate: { type: Date, required: false },
+  endDate: { type: Date, required: false },
+  costEstimation: { type: Number, required: false },
   createdAt: { type: Date, default: Date.now }
 });
 
